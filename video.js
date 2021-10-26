@@ -25,6 +25,10 @@ volume.addEventListener("mousemove", (e) => {
   video.volume = e.target.value;
 });
 
+volume.addEventListener("click", (e) => {
+  video.volume = e.target.value;
+});
+
 // Current time and duration
 const currentTime = () => {
   let currentMinutes = Math.floor(video.currentTime / 60);
@@ -49,9 +53,9 @@ video.addEventListener("timeupdate", () => {
   progressBar.style.width = `${percentage}%`;
 });
 
-progress.addEventListener("click", (e) => {
-  console.log("clicked", e);
-});
+// progress.addEventListener("click", (e) => {
+//   console.log("clicked", e);
+// });
 
 // Change progress bar on click
 progress.addEventListener("click", (e) => {
