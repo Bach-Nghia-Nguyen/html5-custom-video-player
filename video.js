@@ -6,17 +6,19 @@ const currentTimeElement = videoPlayer.querySelector(".current");
 const durationTimeElement = videoPlayer.querySelector(".duration");
 const progress = videoPlayer.querySelector(".video-progress");
 const progressBar = videoPlayer.querySelector(".video-progress-filled");
+const mute = videoPlayer.querySelector(".mute");
+const fullscreen = videoPlayer.querySelector(".fullscreen");
 
-console.log("video element:", video);
+// console.log("video element:", video);
 
 // Play and Pause button
 playButton.addEventListener("click", (e) => {
   if (video.paused) {
     video.play();
-    e.target.textContent = "⏸";
+    playButton.innerHTML = "<i class='fas fa-pause'></i>";
   } else {
     video.pause();
-    e.target.textContent = "▶️";
+    playButton.innerHTML = "<i class='fas fa-play'></i>";
   }
 });
 
@@ -61,4 +63,17 @@ video.addEventListener("timeupdate", () => {
 progress.addEventListener("click", (e) => {
   const progressTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = progressTime;
+});
+
+// console.dir(video.loop);
+
+// mute button
+mute.addEventListener("click", () => {
+  video.muted = !video.muted;
+  mute.classList.toggle("muted");
+});
+
+// fullscreen button
+fullscreen.addEventListener("click", () => {
+  video.requestFullscreen();
 });
